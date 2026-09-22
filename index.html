@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YADAV CATERING | Fresh Online Catering Booking</title>
+  <meta name="description" content="YADAV CATERING by Prop. Hulas Yadav. Book wedding and event catering online, select menu items, and contact directly for catering service in Hazaribagh, Jharkhand." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f7f1e7;
+      --bg-soft:#efe5d3;
+      --paper:#fffaf2;
+      --text:#1e1712;
+      --muted:#6f5d4f;
+      --accent:#8d4b32;
+      --accent-2:#c79052;
+      --accent-3:#375841;
+      --line:rgba(30,23,18,0.1);
+      --shadow:0 20px 60px rgba(66,34,18,0.12);
+      --radius:24px;
+      --radius-sm:16px;
+      --max:1240px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Manrope', sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(199,144,82,0.12), transparent 28%),
+        radial-gradient(circle at 90% 0%, rgba(55,88,65,0.08), transparent 25%),
+        linear-gradient(180deg, #fbf7f0 0%, #f7f1e7 45%, #f4ebdd 100%);
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.25;
+      background-image:
+        linear-gradient(rgba(141,75,50,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(141,75,50,.03) 1px, transparent 1px);
+      background-size:28px 28px;
+      mask-image:linear-gradient(to bottom, rgba(0,0,0,.45), transparent 70%);
+    }
+
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+
+    .container{
+      width:min(calc(100% - 2rem), var(--max));
+      margin-inline:auto;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(26px);
+      transition:opacity .8s ease, transform .8s ease;
+    }
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(14px);
+      background:rgba(255,250,242,.72);
+      border-bottom:1px solid rgba(30,23,18,.06);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      min-height:78px;
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:.12rem;
+    }
+
+    .brand-title{
+      font-family:'Cormorant Garamond', serif;
+      font-size:clamp(1.55rem, 2.3vw, 2.1rem);
+      font-weight:700;
+      line-height:.95;
+      letter-spacing:.03em;
+    }
+
+    .brand-sub{
+      color:var(--muted);
+      font-size:.82rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:1.2rem;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      color:var(--muted);
+      font-weight:700;
+      font-size:.94rem;
+      position:relative;
+    }
+
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-5px;
+      width:100%;
+      height:1px;
+      background:var(--accent);
+      transform:scaleX(0);
+      transform-origin:left;
+      transition:transform .3s ease;
+    }
+
+    .nav-links a:hover::after{transform:scaleX(1)}
+
+    .cta-btn,
+    .ghost-btn,
+    .send-btn,
+    .channel-btn{
+      border:none;
+      cursor:pointer;
+      border-radius:999px;
+      padding:.95rem 1.35rem;
+      font-weight:800;
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+    }
+
+    .cta-btn{
+      background:linear-gradient(135deg, var(--accent), #a75c3b);
+      color:#fff;
+      box-shadow:0 16px 32px rgba(141,75,50,.22);
+    }
+
+    .cta-btn:hover,
+    .ghost-btn:hover,
+    .send-btn:hover,
+    .channel-btn:hover{
+      transform:translateY(-2px) scale(1.02);
+    }
+
+    .cta-btn:active,
+    .ghost-btn:active,
+    .send-btn:active,
+    .channel-btn:active{
+      transform:translateY(0) scale(.98);
+    }
+
+    .ghost-btn{
+      background:transparent;
+      color:var(--accent);
+      border:1px solid rgba(141,75,50,.22);
+    }
+
+    .hero{
+      padding:clamp(2rem, 4vw, 4rem) 0 2rem;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:clamp(1.5rem, 4vw, 3rem);
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:.6rem;
+      border:1px solid rgba(141,75,50,.15);
+      background:rgba(255,250,242,.7);
+      backdrop-filter:blur(10px);
+      color:var(--accent);
+      border-radius:999px;
+      padding:.55rem .9rem;
+      font-size:.82rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .eyebrow::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--accent-2);
+      box-shadow:0 0 0 6px rgba(199,144,82,.12);
+    }
+
+    h1,h2,h3{
+      font-family:'Cormorant Garamond', serif;
+      margin:0;
+      line-height:.95;
+      letter-spacing:.01em;
+    }
+
+    .hero h1{
+      margin-top:1rem;
+      font-size:clamp(3.2rem, 8vw, 7rem);
+      max-width:10ch;
+    }
+
+    .hero h1 span{
+      color:var(--accent);
+      display:block;
+    }
+
+    .hero-copy{
+      max-width:62ch;
+      margin-top:1.2rem;
+      color:var(--muted);
+      font-size:clamp(1rem, 1.6vw, 1.1rem);
+      line-height:1.8;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.9rem;
+      margin-top:1.6rem;
+    }
+
+    .hero-points{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:1rem;
+      margin-top:2rem;
+    }
+
+    .hero-points div{
+      padding:1rem 0;
+      border-top:1px solid var(--line);
+    }
+
+    .hero-points strong{
+      display:block;
+      font-size:1.2rem;
+      margin-bottom:.3rem;
+      color:var(--accent-3);
+    }
+
+    .hero-points span{
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .hero-visual{
+      position:relative;
+      min-height:620px;
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(155deg, rgba(255,250,242,.9), rgba(239,229,211,.65)),
+        radial-gradient(circle at 25% 20%, rgba(199,144,82,.22), transparent 24%),
+        radial-gradient(circle at 78% 30%, rgba(55,88,65,.18), transparent 22%),
+        linear-gradient(145deg, #f5ecdd, #eadcc8);
+      border:1px solid rgba(141,75,50,.08);
+      box-shadow:var(--shadow);
+      isolation:isolate;
+    }
+
+    .hero-visual::before,
+    .hero-visual::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      filter:blur(2px);
+    }
+
+    .hero-visual::before{
+      width:220px;height:220px;
+      top:-40px;right:-30px;
+      background:radial-gradient(circle, rgba(199,144,82,.35), rgba(199,144,82,0));
+    }
+
+    .hero-visual::after{
+      width:260px;height:260px;
+      left:-40px;bottom:-40px;
+      background:radial-gradient(circle, rgba(55,88,65,.24), rgba(55,88,65,0));
+    }
+
+    .platter{
+      position:absolute;
+      inset:8% 8% auto 8%;
+      height:54%;
+      background:linear-gradient(145deg, #6d4129, #3e2418);
+      border-radius:50% / 40%;
+      box-shadow:
+        inset 0 2px 0 rgba(255,255,255,.2),
+        inset 0 -18px 30px rgba(0,0,0,.2),
+        0 40px 80px rgba(59,31,20,.3);
+      transform:rotate(-4deg);
+    }
+
+    .dish{
+      position:absolute;
+      border-radius:50%;
+      box-shadow:
+        inset 0 6px 12px rgba(255,255,255,.24),
+        inset 0 -12px 18px rgba(0,0,0,.14),
+        0 12px 24px rgba(0,0,0,.15);
+    }
+
+    .dish.one{width:142px;height:142px;top:18%;left:14%;background:radial-gradient(circle at 40% 35%, #f9c76a, #cc6a24 70%)}
+    .dish.two{width:120px;height:120px;top:12%;right:16%;background:radial-gradient(circle at 40% 35%, #f8efbf, #80a347 72%)}
+    .dish.three{width:132px;height:132px;top:42%;left:40%;background:radial-gradient(circle at 45% 30%, #f2bb86, #8d4b32 72%)}
+    .dish.four{width:106px;height:106px;top:47%;left:14%;background:radial-gradient(circle at 40% 35%, #fff2d8, #d59d44 74%)}
+    .dish.five{width:110px;height:110px;top:44%;right:18%;background:radial-gradient(circle at 40% 35%, #f7d9d1, #b54330 72%)}
+
+    .leaf{
+      position:absolute;
+      width:88px;
+      height:24px;
+      background:linear-gradient(90deg, #6f8d54, #46633b);
+      border-radius:100px 0 100px 0;
+      opacity:.9;
+      transform-origin:center;
+    }
+    .leaf.a{top:22%;left:47%;transform:rotate(18deg)}
+    .leaf.b{top:57%;left:32%;transform:rotate(-16deg)}
+    .leaf.c{top:34%;right:31%;transform:rotate(36deg)}
+
+    .owner-badge{
+      position:absolute;
+      right:1.2rem;
+      bottom:1.2rem;
+      width:min(78%, 330px);
+      background:rgba(255,250,242,.72);
+      backdrop-filter:blur(14px);
+      border:1px solid rgba(141,75,50,.12);
+      border-radius:24px;
+      padding:1rem 1rem 1.1rem;
+      box-shadow:0 16px 40px rgba(60,31,15,.1);
+    }
+
+    .owner-badge small{
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.15em;
+      font-weight:800;
+    }
+
+    .owner-badge h3{
+      margin-top:.35rem;
+      font-size:2rem;
+    }
+
+    .owner-badge p{
+      margin:.45rem 0 0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:.95rem;
+    }
+
+    section{
+      padding:4rem 0;
+    }
+
+    .section-head{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:1rem;
+      align-items:end;
+      margin-bottom:2rem;
+    }
+
+    .section-head p{
+      margin:.7rem 0 0;
+      max-width:60ch;
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .section-head h2{
+      font-size:clamp(2.5rem, 5vw, 4.5rem);
+    }
+
+    .services-wrap{
+      display:grid;
+      grid-template-columns:1fr 1.1fr;
+      gap:1.5rem;
+      align-items:stretch;
+    }
+
+    .services-copy{
+      background:linear-gradient(180deg, rgba(255,250,242,.8), rgba(250,241,228,.55));
+      border:1px solid rgba(141,75,50,.1);
+      border-radius:var(--radius);
+      padding:1.6rem;
+      box-shadow:var(--shadow);
+    }
+
+    .service-steps{
+      margin-top:1.4rem;
+      display:grid;
+      gap:1rem;
+    }
+
+    .step{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:1rem;
+      align-items:start;
+      padding:1rem 0;
+      border-top:1px solid var(--line);
+    }
+
+    .step:first-child{border-top:none;padding-top:0}
+
+    .step-num{
+      width:44px;height:44px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#fff;
+      font-weight:800;
+      box-shadow:0 10px 20px rgba(141,75,50,.18);
+    }
+
+    .step h3{
+      font-size:1.55rem;
+      margin-bottom:.35rem;
+    }
+
+    .step p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .event-panel{
+      position:relative;
+      border-radius:var(--radius);
+      overflow:hidden;
+      border:1px solid rgba(141,75,50,.1);
+      background:
+        linear-gradient(135deg, rgba(55,88,65,.9), rgba(31,51,39,.95)),
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.08), transparent 25%);
+      color:#f8f2e8;
+      min-height:100%;
+      box-shadow:var(--shadow);
+      padding:1.8rem;
+    }
+
+    .event-panel::before{
+      content:"";
+      position:absolute;
+      inset:auto -5% -15% auto;
+      width:240px;
+      height:240px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(199,144,82,.35), transparent 60%);
+    }
+
+    .event-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.7rem;
+      margin-top:1rem;
+    }
+
+    .event-tags span{
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:999px;
+      padding:.65rem .9rem;
+      background:rgba(255,255,255,.05);
+      font-size:.92rem;
+      font-weight:700;
+    }
+
+    .event-panel p{
+      color:rgba(248,242,232,.84);
+      line-height:1.8;
+      max-width:48ch;
+    }
+
+    .menu-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:1.5rem;
+      align-items:start;
+    }
+
+    .menu-list{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:1.2rem;
+    }
+
+    .menu-item{
+      position:relative;
+      background:rgba(255,250,242,.78);
+      border:1px solid rgba(141,75,50,.1);
+      border-radius:26px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    .menu-item:hover{
+      transform:translateY(-4px);
+      border-color:rgba(141,75,50,.22);
+      box-shadow:0 26px 50px rgba(66,34,18,.14);
+    }
+
+    .menu-item.selected{
+      outline:2px solid rgba(141,75,50,.24);
+      box-shadow:0 28px 56px rgba(141,75,50,.16);
+    }
+
+    .dish-art{
+      aspect-ratio:16/10;
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.25), rgba(255,255,255,0)),
+        linear-gradient(135deg, #e7cba4, #f7efe2);
+    }
+
+    .plate{
+      position:absolute;
+      inset:14% 10%;
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 50% 45%, var(--food1), var(--food2) 57%, #f2e8d8 58%, #fffaf0 72%, #ded0bc 100%);
+      box-shadow:
+        inset 0 8px 18px rgba(255,255,255,.35),
+        0 16px 28px rgba(53,28,17,.18);
+    }
+
+    .garnish,
+    .garnish::before,
+    .garnish::after{
+      position:absolute;
+      content:"";
+      border-radius:999px;
+      background:rgba(55,88,65,.9);
+    }
+
+    .garnish{
+      width:20px;height:8px;
+      top:24%;left:62%;
+      transform:rotate(35deg);
+    }
+    .garnish::before{width:16px;height:7px;top:17px;left:-8px;transform:rotate(-20deg)}
+    .garnish::after{width:13px;height:6px;top:8px;left:14px;transform:rotate(38deg)}
+
+    .dish-label{
+      padding:1rem 1rem 1.1rem;
+    }
+
+    .dish-meta{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      margin-bottom:.4rem;
+    }
+
+    .dish-name{
+      font-size:1.45rem;
+      font-family:'Cormorant Garamond', serif;
+      font-weight:700;
+    }
+
+    .veg-badge{
+      padding:.35rem .55rem;
+      border-radius:999px;
+      font-size:.72rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .veg{background:rgba(55,88,65,.12); color:var(--accent-3)}
+    .nonveg{background:rgba(141,75,50,.12); color:var(--accent)}
+    .sweet{background:rgba(199,144,82,.16); color:#8f5b1d}
+
+    .dish-desc{
+      margin:0;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:.94rem;
+    }
+
+    .add-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      margin-top:1rem;
+    }
+
+    .mini-note{
+      color:var(--muted);
+      font-size:.82rem;
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+
+    .add-btn{
+      border:none;
+      border-radius:999px;
+      padding:.78rem 1rem;
+      background:var(--text);
+      color:#fff;
+      font-weight:800;
+      cursor:pointer;
+      transition:transform .25s ease, background .25s ease, box-shadow .25s ease;
+      box-shadow:0 10px 20px rgba(30,23,18,.12);
+    }
+
+    .add-btn:hover{
+      transform:translateY(-2px);
+      background:var(--accent);
+    }
+
+    .summary{
+      position:sticky;
+      top:96px;
+      background:linear-gradient(180deg, rgba(255,250,242,.95), rgba(246,238,224,.88));
+      border:1px solid rgba(141,75,50,.1);
+      border-radius:30px;
+      padding:1.4rem;
+      box-shadow:var(--shadow);
+    }
+
+    .summary h3{
+      font-size:2rem;
+    }
+
+    .summary p{
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .summary-list{
+      margin:1rem 0 1.2rem;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:.75rem;
+      max-height:290px;
+      overflow:auto;
+    }
+
+    .summary-list li{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      padding:.8rem .9rem;
+      background:rgba(255,255,255,.58);
+      border:1px solid rgba(141,75,50,.08);
+      border-radius:16px;
+      color:var(--text);
+    }
+
+    .summary-list button{
+      border:none;
+      background:transparent;
+      color:var(--accent);
+      cursor:pointer;
+      font-weight:800;
+    }
+
+    .empty-state{
+      color:var(--muted);
+      padding:1rem 0;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .summary-actions{
+      display:grid;
+      gap:.8rem;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:.92fr 1.08fr;
+      gap:1.5rem;
+      align-items:start;
+    }
+
+    .contact-panel,
+    .form-panel{
+      border-radius:30px;
+      border:1px solid rgba(141,75,50,.1);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .contact-panel{
+      background:
+        linear-gradient(145deg, rgba(141,75,50,.96), rgba(88,48,33,.98)),
+        radial-gradient(circle at top right, rgba(255,255,255,.12), transparent 20%);
+      color:#fff7ef;
+      padding:1.6rem;
+      position:relative;
+    }
+
+    .contact-panel p{
+      color:rgba(255,247,239,.82);
+      line-height:1.8;
+    }
+
+    .contact-info{
+      display:grid;
+      gap:1rem;
+      margin-top:1.4rem;
+    }
+
+    .info-block{
+      padding:1rem 1rem;
+      border-radius:20px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.1);
+    }
+
+    .info-block small{
+      display:block;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      opacity:.8;
+      margin-bottom:.4rem;
+      font-weight:800;
+    }
+
+    .info-block strong{
+      font-size:1.15rem;
+      line-height:1.5;
+      display:block;
+    }
+
+    .phone-links{
+      display:grid;
+      gap:.75rem;
+      margin-top:.5rem;
+    }
+
+    .phone-links a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      width:100%;
+      padding:.95rem 1rem;
+      border-radius:18px;
+      background:rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.12);
+      transition:transform .25s ease, background .25s ease;
+      font-weight:800;
+    }
+
+    .phone-links a:hover{
+      transform:translateX(4px);
+      background:rgba(255,255,255,.15);
+    }
+
+    .form-panel{
+      background:rgba(255,250,242,.85);
+      padding:1.6rem;
+      backdrop-filter:blur(10px);
+    }
+
+    form{
+      display:grid;
+      gap:1rem;
+    }
+
+    .form-row{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:1rem;
+    }
+
+    label{
+      display:grid;
+      gap:.45rem;
+      color:var(--text);
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    input, select, textarea{
+      width:100%;
+      border:1px solid rgba(141,75,50,.15);
+      background:rgba(255,255,255,.76);
+      border-radius:16px;
+      padding:1rem 1rem;
+      color:var(--text);
+      outline:none;
+      transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+    }
+
+    input:focus, select:focus, textarea:focus{
+      border-color:rgba(141,75,50,.45);
+      box-shadow:0 0 0 4px rgba(141,75,50,.08);
+    }
+
+    textarea{
+      min-height:140px;
+      resize:vertical;
+    }
+
+    .send-btn{
+      background:linear-gradient(135deg, var(--accent-3), #2d4736);
+      color:#fff;
+      width:max-content;
+      padding:1rem 1.4rem;
+      box-shadow:0 18px 30px rgba(55,88,65,.18);
+    }
+
+    .menu-note{
+      padding:.9rem 1rem;
+      border-radius:18px;
+      background:rgba(199,144,82,.12);
+      color:#774b1d;
+      border:1px solid rgba(199,144,82,.18);
+      font-size:.92rem;
+      line-height:1.6;
+    }
+
+    .channel-box{
+      display:grid;
+      gap:.8rem;
+      padding:1rem;
+      border-radius:20px;
+      background:rgba(55,88,65,.06);
+      border:1px solid rgba(55,88,65,.12);
+    }
+
+    .channel-title{
+      font-size:.9rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--accent-3);
+    }
+
+    .channel-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.8rem;
+    }
+
+    .channel-btn{
+      color:#fff;
+      padding:1rem 1.2rem;
+      text-align:center;
+      min-width:170px;
+    }
+
+    .wa-btn{
+      background:linear-gradient(135deg, #159b52, #0b6f3a);
+      box-shadow:0 16px 30px rgba(21,155,82,.2);
+    }
+
+    .sms-btn{
+      background:linear-gradient(135deg, #8d4b32, #6b3522);
+      box-shadow:0 16px 30px rgba(141,75,50,.18);
+    }
+
+    .helper-text{
+      font-size:.88rem;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .footer{
+      padding:2rem 0 3rem;
+      color:var(--muted);
+    }
+
+    .footer-inner{
+      border-top:1px solid var(--line);
+      padding-top:1.4rem;
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      flex-wrap:wrap;
+    }
+
+    .stagger-1{animation:rise .8s ease .05s both}
+    .stagger-2{animation:rise .8s ease .15s both}
+    .stagger-3{animation:rise .8s ease .25s both}
+    .stagger-4{animation:rise .8s ease .35s both}
+    .stagger-5{animation:rise .8s ease .45s both}
+
+    @keyframes rise{
+      from{opacity:0;transform:translateY(26px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    @media (max-width: 1024px){
+      .hero-grid,
+      .services-wrap,
+      .menu-grid,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+
+      .summary{
+        position:relative;
+        top:auto;
+      }
+
+      .hero-visual{
+        min-height:520px;
+      }
+    }
+
+    @media (max-width: 760px){
+      .nav{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:.9rem 0;
+      }
+
+      .nav-links{
+        width:100%;
+        justify-content:space-between;
+      }
+
+      .hero-points,
+      .menu-list,
+      .form-row,
+      .section-head{
+        grid-template-columns:1fr;
+      }
+
+      .hero h1{
+        max-width:100%;
+      }
+
+      .hero-visual{
+        min-height:440px;
+      }
+
+      .owner-badge{
+        position:relative;
+        right:auto;
+        bottom:auto;
+        margin:1rem;
+        width:auto;
+      }
+
+      .channel-actions{
+        flex-direction:column;
+      }
+
+      .channel-btn,
+      .send-btn{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" aria-label="Primary navigation">
+    <div class="container nav">
+      <a href="#home" class="brand" aria-label="YADAV CATERING Home Prop. Hulas Yadav">
+        <span class="brand-title">YADAV CATERING</span>
+        <span class="brand-sub">Prop. Hulas Yadav</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#menu">Wedding Menu</a>
+        <a href="#booking">Book Online</a>
+        <a href="#contact">Contact</a>
+        <a href="#booking" class="cta-btn">Book Catering</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow stagger-1">Fresh Online Catering Booking</div>
+          <h1 class="stagger-2">Elegant Catering for <span>Weddings & Events</span></h1>
+          <p class="hero-copy stagger-3">
+            Welcome to <strong>YADAV CATERING</strong>, proudly led by <strong>Prop. Hulas Yadav</strong>. Customers can contact us easily, choose menu items online, and send booking requests for weddings, receptions, family functions, parties, and special programs in Hazaribagh and nearby areas.
+          </p>
+
+          <div class="hero-actions stagger-4">
+            <a href="#menu" class="cta-btn">Start Booking</a>
+            <a href="tel:9939410450" class="ghost-btn">Call Us</a>
+          </div>
+
+          <div class="hero-points stagger-5">
+            <div>
+              <strong>Fresh</strong>
+              <span>Wedding-ready menu selection with polished presentation.</span>
+            </div>
+            <div>
+              <strong>Easy</strong>
+              <span>Select dishes online and send your request directly.</span>
+            </div>
+            <div>
+              <strong>Direct</strong>
+              <span>Fast contact through WhatsApp or SMS after form submission.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-hidden="true">
+          <div class="platter"></div>
+          <div class="dish one"></div>
+          <div class="dish two"></div>
+          <div class="dish three"></div>
+          <div class="dish four"></div>
+          <div class="dish five"></div>
+          <div class="leaf a"></div>
+          <div class="leaf b"></div>
+          <div class="leaf c"></div>
+
+          <div class="owner-badge">
+            <small>Owner</small>
+            <h3>Hulas Yadav</h3>
+            <p>A welcoming catering service for weddings, receptions, parties, and large events with direct inquiry and online booking support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>Crafted for Taste, Service & Trust</h2>
+            <p>
+              This website helps customers understand the service quickly. It highlights event catering offerings, allows dish selection online, and creates a clear path to contact the owner for final booking confirmation.
+            </p>
+          </div>
+        </div>
+
+        <div class="services-wrap">
+          <div class="services-copy reveal">
+            <div class="eyebrow">How booking works</div>
+            <div class="service-steps">
+              <div class="step">
+                <div class="step-num">1</div>
+                <div>
+                  <h3>Choose Event Type</h3>
+                  <p>Wedding, birthday, reception, family gathering, corporate lunch, festive celebration, or special community program.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-num">2</div>
+                <div>
+                  <h3>Select Your Menu</h3>
+                  <p>Customers can add preferred dishes from the wedding menu and prepare a clear booking request for review.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-num">3</div>
+                <div>
+                  <h3>Send by WhatsApp or SMS</h3>
+                  <p>After pressing the button, the customer is redirected to WhatsApp or the phone SMS app with the booking details already filled in.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-panel reveal">
+            <div class="eyebrow" style="color:#f5dfbb;border-color:rgba(255,255,255,.15);background:rgba(255,255,255,.06)">Service occasions</div>
+            <h2 style="margin-top:1rem;font-size:clamp(2.4rem,4vw,4rem)">Professional Catering for Celebrations That Matter</h2>
+            <p>
+              YADAV CATERING is designed to feel refined, trustworthy, and event-ready. Customers can build a menu request online, then contact directly through WhatsApp or SMS for final discussion.
+            </p>
+            <div class="event-tags">
+              <span>Wedding Catering</span>
+              <span>Reception Menu</span>
+              <span>Birthday Parties</span>
+              <span>Family Functions</span>
+              <span>Corporate Meals</span>
+              <span>Festival Programs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>Wedding Catering Menu</h2>
+            <p>
+              Customers can select dishes below to prepare an online catering request. This menu does not display prices. Final charges can be discussed directly depending on guest count, service type, date, and location.
+            </p>
+          </div>
+        </div>
+
+        <div class="menu-grid">
+          <div class="menu-list">
+            <article class="menu-item reveal" data-item="Paneer Butter Masala">
+              <div class="dish-art" style="--food1:#ffd878;--food2:#c86228">
+                <div class="plate"></div>
+                <div class="garnish"></div>
+              </div>
+              <div class="dish-label">
+                <div class="dish-meta">
+                  <div class="dish-name">Paneer Butter Masala</div>
+                  <span class="veg-badge veg">Veg</span>
+                </div>
+                <p class="dish-desc">Rich paneer curry with creamy texture, ideal for wedding feasts and premium vegetarian main course servings.</p>
+                <div class="add-wrap">
+                  <span class="mini-note">Wedding favorite</span>
+                  <button class="add-btn" type="button">Add Item</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-item reveal" data-item="Veg Biryani">
+              <div class="dish-art" style="--food1:#f4efc7;--food2:#7ea24c">
+                <div class="plate"></div>
+                <div class="garnish"></div>
+              </div>
+              <div class="dish-label">
+                <div class="dish-meta">
+                  <div class="dish-name">Veg Biryani</div>
+                  <span class="veg-badge veg">Veg</span>
+                </div>
+                <p class="dish-desc">Aromatic rice preparation with festive flavor and colorful vegetables, suitable for gatherings of every size.</p>
+                <div class="add-wrap">
+                  <span class="mini-note">Aromatic rice</span>
+                  <button class="add-btn" type="button">Add Item</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-item reveal" data-item="Chicken Curry">
+              <div class="dish-art" style="--food1:#f0c08e;--food2:#94412f">
+                <div class="plate"></div>
+                <div class="garnish"></div>
+              </div>
+              <div class="dish-label">
+                <div class="dish-meta">
+                  <div class="dish-name">Chicken Curry</div>
+                  <span class="veg-badge nonveg">Non-Veg</span>
+                </div>
+                <p class="dish-desc">Flavorful wedding-style chicken curry prepared for larger celebrations, family occasions, and reception dining.</p>
+                <div class="add-wrap">
+                  <span class="mini-note">Main course</span>
+                  <button class="add-btn" type="button">Add Item</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-item reveal" data-item="Mutton Curry">
+              <div class="dish-art" style="--food1:#efb89f;--food2:#7e2c20">
+                <div class="plate"></div>
+                <div class="garnish"></div>
+              </div>
+              <div class="dish-label">
+                <div class="dish-meta">
+                  <div class="dish-name">Mutton Curry</div>
+                  <span class="veg-badge nonveg">Non-Veg</span>
+                </div>
+                <p class="dish-desc">Premium celebratory dish with deep spice and rich flavor, perfect for special occasions and signature event menus.</p>
+                <div class="add-wrap">
+                  <span class="mini-note">Premium selection</span>
+                  <button class="add-btn" type="button">Add Item</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-item reveal" data-item="Puri / Roti">
+              <div class="dish-art" style="--food1:#fff1d3;--food2:#d9a54c">
+                <div class="plate"></div>
+                <div class="garnish"></div>
+              </div>
+              <div class="dish-label">
+                <div class="dish-meta">
+                  <div class="dish-name">Puri / Roti</div>
+                  <span class="veg-badge veg">Veg</span>
+                </div>
+                <p class="dish-desc">Essential bread options for complete catering service, pairing naturally with curry selections and festive thali spreads.</p>
+                <div class="add-wrap">
+                  <span class="mini-note">Bread option</span>
+                  <button class="add-btn" type="button">Add Item</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-item reveal" data-item="Salad & Raita">
+              <div class="dish-art" style="--food1:#f3f1e4;--food2:#8fb067">
+                <div class="plate"></div>
+                <div class="garnish"></div>
+              </div>
+              <div class="dish-label">
+                <div class="dish-meta">
+                  <div class="dish-name">Salad & Raita</div>
+                  <span class="veg-badge veg">Veg</span>
+                </div>
+                <p class="dish-desc">Fresh accompaniments that balance the meal beautifully and enhance the complete wedding dining experience.</p>
+                <div class="add-wrap">
+                  <span class="mini-note">Side pairing</span>
+                  <button class="add-btn" type="button">Add Item</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-item reveal" data-item="Gulab Jamun">
+              <div class="dish-art" style="--food1:#f3bf7c;--food2:#8f4c28">
+                <div class="plate"></div>
+                <div class="garnish"></div>
+              </div>
+              <div class="dish-label">
+                <div class="dish-meta">
+                  <div class="dish-name">Gulab Jamun</div>
+                  <span class="veg-badge sweet">Sweet</span>
+                </div>
+                <p class="dish-desc">Classic sweet dish loved at weddings and celebrations, adding a warm and traditional dessert finish to the menu.</p>
+                <div class="add-wrap">
+                  <span class="mini-note">Traditional dessert</span>
+                  <button class="add-btn" type="button">Add Item</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-item reveal" data-item="Ice Cream Counter">
+              <div class="dish-art" style="--food1:#f7dce4;--food2:#d48eb2">
+                <div class="plate"></div>
+                <div class="garnish"></div>
+              </div>
+              <div class="dish-label">
+                <div class="dish-meta">
+                  <div class="dish-name">Ice Cream Counter</div>
+                  <span class="veg-badge sweet">Dessert</span>
+                </div>
+                <p class="dish-desc">A fun dessert station option for receptions, parties, and events where guests enjoy a lively sweet ending.</p>
+                <div class="add-wrap">
+                  <span class="mini-note">Counter service</span>
+                  <button class="add-btn" type="button">Add Item</button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <aside class="summary reveal" id="booking">
+            <div class="eyebrow">Booking summary</div>
+            <h3 style="margin-top:1rem;">Add Items for Online Booking</h3>
+            <p>
+              Select your preferred dishes and include them in your booking request below. This summary helps customers prepare a clear menu discussion before contacting you.
+            </p>
+
+            <ul class="summary-list" id="selectedItemsList" aria-live="polite">
+              <li class="empty-state" id="emptyState">No items selected yet</li>
+            </ul>
+
+            <div class="menu-note">
+              After selecting items, fill the contact form with guest count, event location, and date. The site will then redirect the customer to WhatsApp or SMS with the booking message ready.
+            </div>
+
+            <div class="summary-actions" style="margin-top:1rem;">
+              <a href="#contact" class="cta-btn" style="text-align:center;">Proceed to Contact Form</a>
+              <button type="button" class="ghost-btn" id="clearSelection">Clear Selection</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>Contact & Booking Details</h2>
+            <p>
+              Let customers reach you without confusion. They can call either number below or fill the booking form and then continue using WhatsApp or SMS from their phone.
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-panel reveal">
+            <div class="eyebrow" style="color:#f5dfbb;border-color:rgba(255,255,255,.15);background:rgba(255,255,255,.06)">YADAV CATERING</div>
+            <h2 style="margin-top:1rem;font-size:clamp(2.3rem,4vw,3.7rem)">Direct Booking Support</h2>
+            <p>
+              Customers can call directly for booking confirmation, menu discussion, service availability, and event planning.
+            </p>
+
+            <div class="contact-info">
+              <div class="info-block">
+                <small>Owner</small>
+                <strong>Prop. Hulas Yadav</strong>
+              </div>
+
+              <div class="info-block">
+                <small>Contact Numbers</small>
+                <div class="phone-links">
+                  <a href="tel:9939410450">
+                    <span>9939410450</span>
+                    <span>Primary</span>
+                  </a>
+                  <a href="tel:9472769855">
+                    <span>9472769855</span>
+                    <span>Alternate</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="info-block">
+                <small>Address for Online Booking</small>
+                <strong>SOUTH SHIVPURI NEAR VANDANA NAURSING HOME, HAZARIBAGH, JHARKHAND</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-panel reveal">
+            <form id="bookingForm">
+              <div class="form-row">
+                <label>
+                  Customer Name
+                  <input type="text" id="customerName" name="customerName" placeholder="Enter your full name" required />
+                </label>
+                <label>
+                  Phone Number
+                  <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required />
+                </label>
+              </div>
+
+              <div class="form-row">
+                <label>
+                  Event Type
+                  <select id="eventType" name="eventType" required>
+                    <option value="">Select event type</option>
+                    <option>Wedding</option>
+                    <option>Birthday Party</option>
+                    <option>Reception</option>
+                    <option>Family Function</option>
+                    <option>Corporate Event</option>
+                    <option>Festival / Special Program</option>
+                  </select>
+                </label>
+                <label>
+                  Guest Count
+                  <input type="number" id="guestCount" name="guestCount" placeholder="Approximate guests" min="1" />
+                </label>
+              </div>
+
+              <div class="form-row">
+                <label>
+                  Event Date
+                  <input type="date" id="eventDate" name="eventDate" />
+                </label>
+                <label>
+                  Event Location
+                  <input type="text" id="eventLocation" name="eventLocation" placeholder="Enter event location" />
+                </label>
+              </div>
+
+              <label>
+                Selected Menu Items
+                <textarea id="selectedMenuField" name="selectedMenuItems" placeholder="Selected items will appear here automatically"></textarea>
+              </label>
+
+              <label>
+                Extra Notes
+                <textarea id="extraNotes" name="extraNotes" placeholder="Add any special requirements, timing, or service details"></textarea>
+              </label>
+
+              <div class="channel-box">
+                <div class="channel-title">Send booking request through</div>
+                <div class="helper-text">
+                  When the customer clicks one of the buttons below, the phone will try to open either WhatsApp or the SMS app with the booking message already filled.
+                </div>
+                <div class="channel-actions">
+                  <button type="button" class="channel-btn wa-btn" id="sendWhatsApp">Send via WhatsApp</button>
+                  <button type="button" class="channel-btn sms-btn" id="sendSMS">Send via SMS</button>
+                </div>
+              </div>
+
+              <div style="display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;">
+                <a href="tel:9939410450" class="ghost-btn">Call for Quick Booking</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© 2026 YADAV CATERING — Prop. Hulas Yadav</div>
+      <div>Fresh catering website concept with online booking flow.</div>
+    </div>
+  </footer>
+
+  <script>
+    const selectedItems = new Set();
+    const menuItems = document.querySelectorAll('.menu-item');
+    const selectedItemsList = document.getElementById('selectedItemsList');
+    const selectedMenuField = document.getElementById('selectedMenuField');
+    const clearSelectionBtn = document.getElementById('clearSelection');
+    const sendWhatsAppBtn = document.getElementById('sendWhatsApp');
+    const sendSMSBtn = document.getElementById('sendSMS');
+
+    function renderSelectedItems() {
+      selectedItemsList.innerHTML = '';
+
+      if (selectedItems.size === 0) {
+        const li = document.createElement('li');
+        li.className = 'empty-state';
+        li.textContent = 'No items selected yet';
+        selectedItemsList.appendChild(li);
+        selectedMenuField.value = '';
+        return;
+      }
+
+      const itemsArray = Array.from(selectedItems);
+      itemsArray.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <span>${item}</span>
+          <button type="button" aria-label="Remove ${item}">Remove</button>
+        `;
+        li.querySelector('button').addEventListener('click', () => {
+          selectedItems.delete(item);
+          syncMenuState();
+          renderSelectedItems();
+        });
+        selectedItemsList.appendChild(li);
+      });
+
+      selectedMenuField.value = itemsArray.join(', ');
+    }
+
+    function syncMenuState() {
+      menuItems.forEach(card => {
+        const itemName = card.dataset.item;
+        const button = card.querySelector('.add-btn');
+        const isSelected = selectedItems.has(itemName);
+
+        card.classList.toggle('selected', isSelected);
+        button.textContent = isSelected ? 'Added' : 'Add Item';
+        button.style.background = isSelected ? 'var(--accent-3)' : 'var(--text)';
+      });
+    }
+
+    menuItems.forEach(card => {
+      const button = card.querySelector('.add-btn');
+      button.addEventListener('click', () => {
+        const itemName = card.dataset.item;
+        if (selectedItems.has(itemName)) {
+          selectedItems.delete(itemName);
+        } else {
+          selectedItems.add(itemName);
+        }
+        syncMenuState();
+        renderSelectedItems();
+      });
+    });
+
+    clearSelectionBtn.addEventListener('click', () => {
+      selectedItems.clear();
+      syncMenuState();
+      renderSelectedItems();
+    });
+
+    function getBookingMessage() {
+      const name = document.getElementById('customerName').value.trim();
+      const phone = document.getElementById('phoneNumber').value.trim();
+      const eventType = document.getElementById('eventType').value.trim();
+      const guestCount = document.getElementById('guestCount').value.trim();
+      const eventDate = document.getElementById('eventDate').value.trim();
+      const eventLocation = document.getElementById('eventLocation').value.trim();
+      const selectedMenu = document.getElementById('selectedMenuField').value.trim();
+      const notes = document.getElementById('extraNotes').value.trim();
+
+      if (!name || !phone || !eventType) {
+        alert('Please fill Customer Name, Phone Number, and Event Type first.');
+        return null;
+      }
+
+      return `Booking Request - YADAV CATERING
+
+Customer Name: ${name}
+Phone Number: ${phone}
+Event Type: ${eventType}
+Guest Count: ${guestCount || 'Not specified'}
+Event Date: ${eventDate || 'Not specified'}
+Event Location: ${eventLocation || 'Not specified'}
+Selected Menu Items: ${selectedMenu || 'No items selected'}
+Extra Notes: ${notes || 'None'}
+
+Owner: Prop. Hulas Yadav
+Contact: 9939410450 / 9472769855
+Address: SOUTH SHIVPURI NEAR VANDANA NAURSING HOME, HAZARIBAGH, JHARKHAND`;
+    }
+
+    sendWhatsAppBtn.addEventListener('click', () => {
+      const message = getBookingMessage();
+      if (!message) return;
+      const encodedMessage = encodeURIComponent(message);
+      window.location.href = `https://wa.me/919939410450?text=${encodedMessage}`;
+    });
+
+    sendSMSBtn.addEventListener('click', () => {
+      const message = getBookingMessage();
+      if (!message) return;
+      const encodedMessage = encodeURIComponent(message);
+      window.location.href = `sms:9939410450?body=${encodedMessage}`;
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    renderSelectedItems();
+    syncMenuState();
+  </script>
+</body>
+</html>
